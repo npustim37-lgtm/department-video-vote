@@ -373,7 +373,7 @@ $('#login-form').addEventListener('submit', async (event) => {
   const form = event.currentTarget;
   const account = $('#login-username').value.trim();
   const password = $('#login-password').value;
-  if (!account.includes('@') && !validName(account)) return toast('請輸入姓名。', 'error');
+  if (!account.includes('@') && !validName(account)) return toast('請輸入學號或 Email。', 'error');
   setBusy(form, true);
   try {
     const email = account.includes('@') ? account : await voterEmail(account);
