@@ -303,9 +303,9 @@ async function excelRows(file) {
   const sheet = await readXlsxFile(file);
   if (!sheet.length) throw new Error('Excel 沒有資料。');
   const names = sheet[0].map((value) => String(value ?? '').trim().toLowerCase());
-  const aliases = { name: ['姓名', 'name'], password: ['密碼', '密码', 'password'] };
+  const aliases = { name: ['帳號', 'account', 'username'], password: ['密碼', '密码', 'password'] };
   const column = Object.fromEntries(Object.entries(aliases).map(([field, values]) => [field, names.findIndex((name) => values.includes(name))]));
-  if (Object.values(column).some((index) => index < 0)) throw new Error('第一列必須包含「姓名、密碼」欄位。');
+  if (Object.values(column).some((index) => index < 0)) throw new Error('第一列必須包含「帳號、密碼」欄位。');
   return sheet.slice(1).map((cells) => ({ name: cells[column.name], password: cells[column.password] }))
     .filter((row) => Object.values(row).some((value) => value != null && String(value).trim()));
 }
