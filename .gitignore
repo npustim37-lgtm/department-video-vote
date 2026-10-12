@@ -1,0 +1,9 @@
+node_modules/
+dist/
+supabase/.temp/
+.env
+.env.local
+.env.*.local
+*.xlsx
+*.xls
+*.csv
